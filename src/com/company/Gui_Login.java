@@ -15,13 +15,14 @@ public class Gui_Login {
         int y=-240;
         int width=890;
         int height=550;
+
+        Color white;
+        white=new Color(234,234,234);
         /* ----------*/
         JFrame f;
-        Gui_Header header=new Gui_Header(-74,-240, 890,550);
+        Gui_Header header=new Gui_Header(-74,-240, 890,550,white);
         f=header.gui_Header_init();
         ImageIcon icon1= new ImageIcon("images/a1.jpg");
-
-        Color white=new Color(234,234,234);
         Font font1;
         font1=new Font("Arial",Font.PLAIN,20);
         JTextField tf1;
