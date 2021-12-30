@@ -8,11 +8,12 @@ import java.sql.Connection;
 public class DataBase_Mysql {
     Connection con = null;
     public DataBase_Mysql(){
-        System.out.println("[OK] Database mysql connection constructor");
+
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/jello", "root", "");
+            System.out.println("[OK] Database mysql connection Successfully");
         }
         catch (Exception e){
             System.out.println("[FAILED] Database connection constructor ."+e);
