@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Gui_Login {
-    Gui_Login(){
+    JFrame f;
+    Gui_Login(JFrame frame){
+        f=frame;
         gui_Login_init();
         System.out.println("[OK] Gui_Login");
     }
@@ -19,14 +21,16 @@ public class Gui_Login {
         Color white;
         white=new Color(234,234,234);
         /* ----------*/
-        JFrame f;
-        Gui_Header header=new Gui_Header(-74,-240, 890,550,white);
-        f=header.gui_Header_init();
+        Gui_Header header=new Gui_Header(x,y,width,height,white,f);
+        header.gui_Header_init();
+
+        Container c=f.getContentPane();
+
         ImageIcon icon1= new ImageIcon("images/a1.jpg");
         Font font1;
         font1=new Font("Arial",Font.PLAIN,20);
         JTextField tf1;
-        JLabel l1,l2,l3,l4,l5;
+        JLabel l1,l2,l5;
         l1=new JLabel("Email :");
         l1.setFont(font1);
         l2=new JLabel("Password:");
@@ -45,27 +49,30 @@ public class Gui_Login {
         password1.setBounds(285,250,350,30);
         password1.setFont(font1);
         JButton b=new JButton("LOGIN");
-        b.setBounds(370,300,80, 30);//x axis, y axis, width, height
+        b.setBounds(370,300,80, 30);//x-axis, y axis, width, height
         //f.setSize(f.getMaximumSize());
-        f.setSize(829,553);
+        c.setSize(829,553);
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                tf1.setText("Welcome to Javatpoint.");
-                JOptionPane.showMessageDialog(f,"Password Not Matched");
+                tf1.setText("Welcome to Noble.");
+                JOptionPane.showMessageDialog(f,"Password Matched");
+                //c.dispose();
+                new Gui_DashBoard(f);
+
             }
         });
-        f.add(tf1);
+        c.add(tf1);
 
-        f.add(password1);
-        f.add(l1);
-        f.add(l2);
+        c.add(password1);
+        c.add(l1);
+        c.add(l2);
 
-        f.add(l5);
-        f.add(b);
+        c.add(l5);
+        c.add(b);
 
         f.setLayout(null);//using no layout managers
         f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
     }
 }
