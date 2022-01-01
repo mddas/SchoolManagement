@@ -1,11 +1,11 @@
 package com.company;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class Gui_Login {
+public class Gui_Login implements ActionListener{
     JFrame f;
+    JButton login;
     Gui_Login(JFrame frame){
         f=frame;
         gui_Login_init();
@@ -38,29 +38,26 @@ public class Gui_Login {
 
         l5=new JLabel(icon1);
         l5.setBounds(0,0, icon1.getIconWidth(), icon1.getIconHeight() );
+
         l1.setBounds(160,200,350,30);
         l1.setForeground(white);
+
         l2.setBounds(160,250,350,30);
         l2.setForeground(white);
+
         tf1=new JTextField();
         tf1.setBounds(285,200, 350,30);
         tf1.setFont(font1);
+
         JPasswordField password1 = new JPasswordField();
         password1.setBounds(285,250,350,30);
         password1.setFont(font1);
-        JButton b=new JButton("LOGIN");
-        b.setBounds(370,300,80, 30);//x-axis, y axis, width, height
-        //f.setSize(f.getMaximumSize());
-        c.setSize(829,553);
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                tf1.setText("Welcome to Noble.");
-                JOptionPane.showMessageDialog(f,"Password Matched");
-                //c.dispose();
-                new Gui_DashBoard(f);
 
-            }
-        });
+        login=new JButton("LOGIN");
+        login.setBounds(370,300,80, 30);//x-axis, y axis, width, height
+        login.addActionListener(this);//this is ActionListener
+        f.setSize(829,553);
+
         c.add(tf1);
 
         c.add(password1);
@@ -68,10 +65,21 @@ public class Gui_Login {
         c.add(l2);
 
         c.add(l5);
-        c.add(b);
+        c.add(login);
 
         f.setLayout(null);//using no layout managers
         f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==login){
+            JOptionPane.showMessageDialog(f,"You are login");
+        }
+        else {
+            JOptionPane.showMessageDialog(f,"Not Login");
+        }
 
 
     }
